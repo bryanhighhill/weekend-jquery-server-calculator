@@ -1,9 +1,11 @@
 .calc-button-grid {
     display: grid;
     grid-template-columns: repeat(4, .2fr);
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
   }
 
-.calc-equations {
+.calc-display {
     width: 59%;
 }
 

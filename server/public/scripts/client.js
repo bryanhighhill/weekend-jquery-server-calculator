@@ -1,11 +1,29 @@
 console.log('this is my javascript file');
 
-// $(document).ready(onReady);
+$(document).ready(onReady);
 
-// function onReady() {
-//     console.log('in onReady!');
-//     $('.add-button').on('click', addItem);
-//     $('#item-list').on('click', '.remove', removeThis); // needs to be written differently than addItem because there are no remove buttons on page load - 
-//     // USE DESCENDENT SELECTOR - center attribute .remove denotes anything in the future that gets remove class attached to it
-//     $('.change-color').on('click', changeColor);
-// }
+function onReady() {
+    console.log('in onReady!');
+    $('.calc-button[data-number]').on('click', addNumber);
+    $('.calc-button[data-operator]').on('click', addOperator);
+    $('#clear-button').on('click', clearDisplay);
+}
+
+//add number to display
+function addNumber() {
+    console.log('you clicked a number');
+};
+
+//add operator to display
+function addOperator() {
+    console.log('you clicked an operator');
+};
+
+//create object from equation answer
+function equalObject() {};
+
+//clear display
+function clearDisplay() {
+    console.log('you clicked on clear display button');
+};
+
