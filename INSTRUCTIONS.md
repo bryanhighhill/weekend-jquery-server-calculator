@@ -14,9 +14,6 @@ salary-calculator-server/
 │   └── ...
 └── .gitignore
 
-
-
-
 # Weekend Challenge: Server Side Calculator
 
 Welcome to the weekend challenge!
