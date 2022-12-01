@@ -1,0 +1,13 @@
+.calc-button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, .2fr);
+  }
+
+.calc-equations {
+    width: 59%;
+}
+
+.clear-button {
+    width: 19%
+}
+  
