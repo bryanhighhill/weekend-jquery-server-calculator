@@ -34,5 +34,6 @@ function equalObject() {
 //clear display
 function clearDisplay() {
     console.log('you clicked on clear display button');
+    $('#calc-display').val(' ');
 };
 
