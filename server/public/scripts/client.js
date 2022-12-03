@@ -29,6 +29,10 @@ function addOperator() {
 //create object from equation answer
 function equalObject() {
     console.log('you clicked on the equals');
+    //check validity of input values
+    if (isInvalid()) {
+        return;
+    }
     // make AJAX POST method here
     $.ajax({
         method: 'POST',
@@ -68,6 +72,43 @@ function appendToDom(array) {
     }
 }
 
+//check validity function
+function isInvalid(){
+    let input = $('#calc-display').val();
+    if (input == ''){
+        alert('input cannot be blank');
+        return true;
+    }
+    if (input == '+' || input == '-' || input == '/' || input == '*') {
+        alert('where are your numbers?');
+        return true;
+    }
+    if (input.length < 3){
+        alert('you are missing something here!');
+        return true;
+    }
+    if (input.split('+').length > 2) {
+        alert('too many operators');
+        return true;
+    }
+    if (input.split('-').length > 2) {
+        alert('too many operators');
+        return true;
+    }
+    if (input.split('*').length > 2) {
+        alert('too many operators');
+        return true;
+    }
+    if (input.split('/').length > 2) {
+        alert('too many operators');
+        return true;
+    }
+    if (Number(input) != NaN) {
+        alert('please include an operator');
+        return true;
+    } 
+    return false;
+}
 //clear display
 function clearDisplay() {
     console.log('you clicked on clear display button');
