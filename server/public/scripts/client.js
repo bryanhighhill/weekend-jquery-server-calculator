@@ -103,10 +103,6 @@ function isInvalid(){
         alert('too many operators');
         return true;
     }
-    if (Number(input) != NaN) {
-        alert('please include an operator');
-        return true;
-    } 
     return false;
 }
 //clear display
