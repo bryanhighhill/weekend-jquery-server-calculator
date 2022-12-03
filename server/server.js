@@ -6,23 +6,23 @@ const port = 5001;
 app.use(express.static('server/public'));
 // app.use(express.urlencoded());
 
-// const quoteList = require('./modules/quoteList');
+const equationHandler = require('./scripts/equations');
 
-// app.listen(port, () => {
-//     console.log('listening on port, ', port);
-// });
+app.listen(port, () => {
+    console.log('listening on port, ', port);
+});
 
-// app.get('/quotes', function(req, res) {
-//     console.log("request for /quotes was made");
-//     res.send(quoteList);
-// });
+app.get('', function(req, res) {
+    console.log("request was made");
+    res.send('hello there');
+});
 
-// app.post('/quotes', function(req, res) {
-//     console.log('in the post request!', req.body); //access data being sent in POST request using req.body
-//     if(req.body.text && req.body.author) {
-//     quoteList.push(req.body);
-//     res.sendStatus(201);
-// } else {
-//     res.sendStatus(500);
-// }
-// });
+app.post('/equation', function(req, res) {
+    console.log('in the post request!', req.equation); //access data being sent in POST request using req.body
+    if (req.equation != undefined) {
+        equationHandler.processAndSave(req.equation);
+        res.sendStatus(201); //created request
+    } else {
+        res.sendStatus(400); //bad request
+    }
+});

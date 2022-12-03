@@ -24,8 +24,8 @@ You are going to be building a server-side calculator. The logic for the calcula
 
 ### Calculator
 
-Create a user interface where the user can input two values (2 input elements) and the select type of mathematical operation. 
-When the submit (`=` button) is clicked, capture this input, bundle it up in an object, 
+[ x ] Create a user interface where the user can input two values (2 input elements) and the select type of mathematical operation. 
+      When the submit (`=` button) is clicked, capture this input, bundle it up in an object, 
 and send this object to the server via a POST. 
 There should also be a 'C' button that will clear the user input fields.
 

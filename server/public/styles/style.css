@@ -1,15 +1,15 @@
 .calc-button-grid {
     display: grid;
-    grid-template-columns: repeat(4, .2fr);
+    grid-template-columns: repeat(4, .1fr);
     grid-row-gap: 5px;
     grid-column-gap: 5px;
   }
 
-.calc-display {
-    width: 59%;
+#calc-display {
+    width: 35%;
 }
 
-.clear-button {
-    width: 19%
+#clear-button {
+    width: 5%
 }
   

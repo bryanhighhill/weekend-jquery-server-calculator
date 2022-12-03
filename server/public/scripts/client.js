@@ -6,7 +6,7 @@ function onReady() {
     console.log('in onReady!');
     $('.calc-button[data-number]').on('click', addNumber);
     $('.calc-button[data-operator]').on('click', addOperator);
-    $('.calc-button[data-complete').on('click', equalObject);
+    $('.calc-button[data-complete]').on('click', equalObject);
     $('#clear-button').on('click', clearDisplay);
 }
 
@@ -28,6 +28,18 @@ function addOperator() {
 //create object from equation answer
 function equalObject() {
     console.log('you clicked on the equals');
+    // make AJAX POST method here
+    $.ajax({
+        method: 'POST',
+        url: '/equation',
+        data: {equation: $('#calc-display').val()},
+    }).then(function(response){
+        console.log('this is the POST response from the server', response);
+        //get the updated array
+    }).catch(function(error){ //add error catch to anywhere you have a .then
+        alert(error.responseText);
+        console.log(error);
+    });
     
 };
 
