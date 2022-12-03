@@ -19,7 +19,11 @@ let equationHandler = {
             let numArray = equation.split('*');
             mathDoer(numArray[0], '*', numArray[1]);
         }
-    }
+    },
+    clearHistory: function clearHistory() {
+        console.log('in clearHistory function');
+        equationsList.length = 0;
+    },
 }
 
 function mathDoer (num1, operator, num2) {

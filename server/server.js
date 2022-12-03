@@ -26,3 +26,9 @@ app.post('/equation', function(req, res) {
         res.sendStatus(400); //bad request
     }
 });
+
+app.delete('/equation', function(req, res) {
+    console.log('DELETE request was made');
+    equationHandler.clearHistory();
+    res.sendStatus(200);
+})

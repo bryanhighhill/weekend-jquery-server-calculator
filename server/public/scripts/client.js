@@ -9,6 +9,7 @@ function onReady() {
     $('.calc-button[data-operator]').on('click', addOperator);
     $('.calc-button[data-complete]').on('click', equalObject);
     $('#clear-button').on('click', clearDisplay);
+    $('#clear-history-button').on('click', clearHistory);
 }
 
 //add number to display
@@ -110,4 +111,14 @@ function clearDisplay() {
     console.log('you clicked on clear display button');
     $('#calc-display').val('');
 };
+
+function clearHistory() {
+    console.log('you\'ve clicked clear history');
+    $.ajax({
+        method: 'DELETE',
+        url: '/equation',
+    }).then(function(response){
+        getEquationsList();
+    })
+}
 
