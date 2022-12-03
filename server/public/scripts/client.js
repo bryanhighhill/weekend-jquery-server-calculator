@@ -32,16 +32,40 @@ function equalObject() {
     $.ajax({
         method: 'POST',
         url: '/equation',
-        data: {equation: $('#calc-display').val()},
+        data: { 
+            equation: $('#calc-display').val(),
+        },
     }).then(function(response){
         console.log('this is the POST response from the server', response);
-        //get the updated array
+        //call function to get the updated array and append to DOM
+        getEquationsList();
+
     }).catch(function(error){ //add error catch to anywhere you have a .then
         alert(error.responseText);
         console.log(error);
     });
     
 };
+
+function getEquationsList() {
+    console.log('GET function for equations list was called');
+    $.ajax({
+        method: 'GET',
+        url: '/equation',
+    }).then(function(response){
+        appendToDom(response);
+    })
+}
+
+function appendToDom(array) {
+    console.log('this is my list of equations', array);
+    $('#output').empty();
+    for (let item of array) {
+        $('#output').append(`
+            <li>${item}</li>
+        `)
+    }
+}
 
 //clear display
 function clearDisplay() {

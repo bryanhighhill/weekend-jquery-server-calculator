@@ -4,23 +4,23 @@ const app = express();
 const port = 5001;
 
 app.use(express.static('server/public'));
-// app.use(express.urlencoded());
+app.use(express.urlencoded());
 
-const equationHandler = require('./scripts/equations');
+const equationHandler = require('./public/scripts/equations');
 
 app.listen(port, () => {
     console.log('listening on port, ', port);
 });
 
-app.get('', function(req, res) {
-    console.log("request was made");
-    res.send('hello there');
+app.get('/equation', function(req, res) {
+    console.log("GET request was made");
+    res.send(equationHandler.equationsList);
 });
 
 app.post('/equation', function(req, res) {
-    console.log('in the post request!', req.equation); //access data being sent in POST request using req.body
-    if (req.equation != undefined) {
-        equationHandler.processAndSave(req.equation);
+    console.log('POST request was made', req.body.equation); //access data being sent in POST request using req.body
+    if (req.body.equation != undefined) {
+        equationHandler.processAndSave(req.body.equation);
         res.sendStatus(201); //created request
     } else {
         res.sendStatus(400); //bad request
