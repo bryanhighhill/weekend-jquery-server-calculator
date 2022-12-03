@@ -4,6 +4,7 @@ $(document).ready(onReady);
 
 function onReady() {
     console.log('in onReady!');
+    getEquationsList();
     $('.calc-button[data-number]').on('click', addNumber);
     $('.calc-button[data-operator]').on('click', addOperator);
     $('.calc-button[data-complete]').on('click', equalObject);
@@ -44,7 +45,7 @@ function equalObject() {
         alert(error.responseText);
         console.log(error);
     });
-    
+    clearDisplay();
 };
 
 function getEquationsList() {
@@ -70,6 +71,6 @@ function appendToDom(array) {
 //clear display
 function clearDisplay() {
     console.log('you clicked on clear display button');
-    $('#calc-display').val(' ');
+    $('#calc-display').val('');
 };
 
