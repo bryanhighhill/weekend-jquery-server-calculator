@@ -11,17 +11,58 @@
 
 #clear-two-button {
     width: 5%;
+    border-radius: 10%;
 }
 
 .clear-button {
     background-color: rgb(234, 87, 38);
-    border-radius: 20%;
+    border-radius: 10%;
 }
 
 .calc-two-equal-button {
-    background-color: rgb(105, 149, 91);
+    background-color: rgb(120, 171, 105);
+    border-radius: 10%;
 }
 
 #final-answer {
     color: rgb(12, 12, 148);
+}
+
+.calc-two-num-button {
+    background-color: rgb(250, 194, 9);
+    border-radius: 10%;
+}
+
+#decimal {
+    background-color: rgb(250, 194, 9);
+    border-radius: 10%;
+}
+
+.calc-one-button {
+    background-color: turquoise;
+    border-radius: 10%;
+}
+
+.calc-two-button {
+    background-color: turquoise;
+    border-radius: 10%;
+}
+
+#equals {
+    background-color: rgb(120, 171, 105);
+    border-radius: 10%;
+}
+
+#calc-one {
+    border-style: solid;
+    border-radius: 25px;
+    background-color: rgb(233, 166, 144);
+    padding: 10px;
+}
+
+#calc-two {
+    border-style: solid;
+    border-radius: 25px;
+    background-color: rgb(240, 180, 160);
+    padding: 10px;
 }

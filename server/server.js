@@ -7,7 +7,6 @@ app.use(express.static('server/public'));
 app.use(express.urlencoded());
 
 const equationHandler = require('./public/scripts/equations');
-const equationDecipher = require('./public/scripts/equations');
 
 app.listen(port, () => {
     console.log('listening on port, ', port);
@@ -27,6 +26,14 @@ app.post('/equation', function(req, res) {
         res.sendStatus(400); //bad request
     }
 });
+
+app.delete('/equation', function(req, res) {
+    console.log('delete line item request was made');
+    if (req.body.what == 'delete') {
+        equationHandler.removeLineItem();
+        res.sendStatus(200);
+    }
+})
 
 app.delete('/equation', function(req, res) {
     console.log('DELETE request was made');

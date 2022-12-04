@@ -17,6 +17,7 @@ function onReady() {
     $('.calc-two-button[data-operator]').on('click', addOperator);
     $('.calc-two-equal-button[data-complete]').on('click', equalObject);
     $('#clear-two-button').on('click', clearDisplay);
+    // $('#clear-two-button').on('click', clearLineItem);
     $('#clear-history-button').on('click', clearHistory);
     //$('#output').on('click', 'future button id', 'function to run');
 }
@@ -95,7 +96,6 @@ function equalObject() {
         alert(error.responseText);
         console.log(error);
     });
-    clearDisplay();
 };
 
 function getEquationsList() {
@@ -161,7 +161,25 @@ function isInvalid(){
 function clearDisplay() {
     console.log('you clicked on clear display button');
     $('#calc-display').val('');
+
+    clearLineItem();
 };
+
+//CALC 2: remove last line item from list
+function clearLineItem() {
+    console.log('in clearLineItem');
+    $.ajax({
+        method: 'DELETE',
+        url: '/equation',
+        data: {
+            what: 'delete',
+        },
+    }).then(function(response) {
+        //call function to get the updated array and append to DOM
+        getEquationsList();
+        // clearCurrentAnswer();
+    });
+}
 
 function clearHistory() {
     console.log('you\'ve clicked clear history');
@@ -170,6 +188,11 @@ function clearHistory() {
         url: '/equation',
     }).then(function(response){
         getEquationsList();
+        clearCurrentAnswer();
     })
+}
+
+function clearCurrentAnswer(){
+    $('#answer').empty();
 }
 

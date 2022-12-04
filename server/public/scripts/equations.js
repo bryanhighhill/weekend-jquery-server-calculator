@@ -1,10 +1,8 @@
 let equationsList = [];
-let currentAnswer = [];
 
 //object that decifers and splits up equation
 let equationHandler = {
     equationsList: equationsList,
-    currentAnswer: currentAnswer,
     processAndSave: function processAndSave (equation) {
         if (equation.includes ('+')) {
             let numArray = equation.split('+');
@@ -26,6 +24,11 @@ let equationHandler = {
     clearHistory: function clearHistory() {
         console.log('in clearHistory function');
         equationsList.length = 0;
+    },
+    removeLineItem: function removeLineItem() {
+        console.log('in removeLineItem');
+        equationsList.pop();
+        console.log(equationsList);
     },
 }
 

@@ -11,43 +11,46 @@
 </head>
 <body>
     <h1>Weekend Challenge #2</h1>
-    <h2>Server Side Calculator #1</h2>
-    
-    <input type="text" placeholder="0" id="calc-display-num1">
-    <button class="calc-one-button" data-operator="+">+</button>
-    <button class="calc-one-button" data-operator="-">-</button>
-    <button class="calc-one-button" data-operator="*">*</button>
-    <button class="calc-one-button" data-operator="/">/</button>
-    <input type="text" placeholder="0" id="calc-display-num2">
-    <button class="calc-one-button" data-complete>=</button>
-    <button class="clear-button" id="clear-one-button">C</button>
-    <br />
-    <br />
-    <h2>Server Side Calculator #2</h2>
-    <input type="text" placeholder="0" id="calc-display" disabled>
-    <button class="clear-button" id="clear-two-button">C</button>
-    <br />
-    <br />
-    <div class="calc-button-grid">
-        <button class="calc-two-num-button" data-number="7">7</button>
-        <button class="calc-two-num-button" data-number="8">8</button>
-        <button class="calc-two-num-button" data-number="9">9</button>
-        <button class="calc-two-button" data-operator="+">+</button>
-        <button class="calc-two-num-button" data-number="4">4</button>
-        <button class="calc-two-num-button" data-number=5>5</button>
-        <button class="calc-two-num-button" data-number="6">6</button>
-        <button class="calc-two-button" data-operator="-">-</button>
-        <button class="calc-two-num-button" data-number="1">1</button>
-        <button class="calc-two-num-button" data-number="2">2</button>
-        <button class="calc-two-num-button" data-number="3">3</button>
-        <button class="calc-two-button" data-operator="*">*</button>
-        <button class="calc-two-num-button" data-number="0">0</button>
-        <button class="calc-two-button" data-operator=".">.</button>
-        <button class="calc-two-equal-button" data-complete>=</button>
-        <button class="calc-two-button" data-operator="/">/</button>
+    <div id="calc-one">
+        <h2>Server Side Calculator #1</h2>
+        <input type="text" placeholder="0" id="calc-display-num1">
+        <button class="calc-one-button" data-operator="+">+</button>
+        <button class="calc-one-button" data-operator="-">-</button>
+        <button class="calc-one-button" data-operator="*">*</button>
+        <button class="calc-one-button" data-operator="/">/</button>
+        <input type="text" placeholder="0" id="calc-display-num2">
+        <button id="equals" class="calc-one-button" data-complete>=</button>
+        <button class="clear-button" id="clear-one-button">C</button>
+        <br />
+        <br />
+    </div>
+    <div id="calc-two">    
+        <h2>Server Side Calculator #2</h2>
+        <input type="text" placeholder="0" id="calc-display" disabled>
+        <button class="clear-button" id="clear-two-button">C</button>
+        <br />
+        <br />
+        <div class="calc-button-grid">
+            <button class="calc-two-num-button" data-number="7">7</button>
+            <button class="calc-two-num-button" data-number="8">8</button>
+            <button class="calc-two-num-button" data-number="9">9</button>
+            <button class="calc-two-button" data-operator="+">+</button>
+            <button class="calc-two-num-button" data-number="4">4</button>
+            <button class="calc-two-num-button" data-number=5>5</button>
+            <button class="calc-two-num-button" data-number="6">6</button>
+            <button class="calc-two-button" data-operator="-">-</button>
+            <button class="calc-two-num-button" data-number="1">1</button>
+            <button class="calc-two-num-button" data-number="2">2</button>
+            <button class="calc-two-num-button" data-number="3">3</button>
+            <button class="calc-two-button" data-operator="*">*</button>
+            <button class="calc-two-num-button" data-number="0">0</button>
+            <button id="decimal" class="calc-two-button" data-operator=".">.</button>
+            <button class="calc-two-equal-button" data-complete>=</button>
+            <button class="calc-two-button" data-operator="/">/</button>
+        </div>
     </div>
     <br />
-    <h2>This is the answer to your equation is:</h2>
+    <h2>Answer:</h2>
     <div id="answer"></div>
     <br />
     <hr />
