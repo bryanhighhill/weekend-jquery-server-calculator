@@ -126,8 +126,13 @@ function appendToDom(array) {
 //CALC 2: check validity function
 function isInvalid(){
     let input = $('#calc-display').val();
+
     if (input == ''){
         alert('input cannot be blank');
+        return true;
+    }
+    if (/[a-zA-Z]/.test(input)) {
+        alert('no letters allowed');
         return true;
     }
     if (input == '+' || input == '-' || input == '/' || input == '*') {
