@@ -115,6 +115,11 @@ function appendToDom(array) {
         $('#output').append(`
             <li>${item}</li>
         `)
+        let answerArray = item.split('=');
+        $('#answer').empty();
+        $('#answer').append(`
+            <h1 id="final-answer">${answerArray[1]}</h1>
+        `)
     }
 }
 

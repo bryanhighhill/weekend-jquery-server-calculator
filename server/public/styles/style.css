@@ -10,6 +10,18 @@
 }
 
 #clear-two-button {
-    width: 5%
+    width: 5%;
 }
-  
+
+.clear-button {
+    background-color: rgb(234, 87, 38);
+    border-radius: 20%;
+}
+
+.calc-two-equal-button {
+    background-color: rgb(105, 149, 91);
+}
+
+#final-answer {
+    color: rgb(12, 12, 148);
+}

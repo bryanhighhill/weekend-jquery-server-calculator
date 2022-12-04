@@ -18,16 +18,6 @@ app.get('/equation', function(req, res) {
     res.send(equationHandler.equationsList);
 });
 
-app.post('/equation', function(req,res) {
-    console.log('POST request was made', req.body.equation);
-    if (req.body.equation != undefined) {
-        equationDecipher.processAndSave(req.body.equation);
-        res.sendStatus(201); //created request
-    } else {
-        res.sendStatus(400); //bad request
-    }
-});
-
 app.post('/equation', function(req, res) {
     console.log('POST request was made', req.body.equation); //access data being sent in POST request using req.body
     if (req.body.equation != undefined) {
