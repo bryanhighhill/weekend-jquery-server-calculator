@@ -112,10 +112,10 @@ function appendToDom(array) {
     console.log('this is my list of equations', array);
     $('#output').empty();
     for (let item of array) {
-        $('#output').append(`
-            <li>${item}</li>
-        `)
         let answerArray = item.split('=');
+        $('#output').append(`
+            <li>${answerArray[0]}</li>
+        `)
         $('#answer').empty();
         $('#answer').append(`
             <h1 id="final-answer">${answerArray[1]}</h1>
