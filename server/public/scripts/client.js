@@ -2,17 +2,61 @@ console.log('this is my javascript file');
 
 $(document).ready(onReady);
 
+let operatorArray = [];
+
 function onReady() {
     console.log('in onReady!');
     getEquationsList();
-    $('.calc-button[data-number]').on('click', addNumber);
-    $('.calc-button[data-operator]').on('click', addOperator);
-    $('.calc-button[data-complete]').on('click', equalObject);
-    $('#clear-button').on('click', clearDisplay);
+    clearInputValues();
+    //CALC #1
+    $('.calc-one-button[data-operator]').on('click', operatorFunction);
+    $('.calc-one-button[data-complete]').on('click', equalFunction);
+    $('#clear-one-button').on('click', clearInputValues);
+    //CALC #2
+    $('.calc-two-button[data-number]').on('click', addNumber);
+    $('.calc-two-button[data-operator]').on('click', addOperator);
+    $('.calc-two-button[data-complete]').on('click', equalObject);
+    $('#clear-two-button').on('click', clearDisplay);
     $('#clear-history-button').on('click', clearHistory);
+    //$('#output').on('click', 'future button id', 'function to run');
 }
 
-//add number to display
+//CALC 1: function to capture which operator is clicked on
+function operatorFunction() {
+    console.log('you clicked an operator');
+    operatorArray.length = 0;
+    let operator = $(this).data('operator');
+    console.log(operator);
+    operatorArray.push(operator);
+    console.log(operatorArray);
+}
+
+//CALC 1: create object from equation and make POST request
+function equalFunction() {
+    $.ajax({
+        method: 'POST',
+        url: '/equation',
+        data: { 
+            equation: $('#calc-display-num1').val() + operatorArray[0] + $('#calc-display-num2').val(),
+        },
+    }).then(function(response){
+        console.log('this is the POST response from the server', response);
+        //call function to get the updated array and append to DOM
+        getEquationsList();
+
+    }).catch(function(error){ //add error catch to anywhere you have a .then
+        alert(error.responseText);
+        console.log(error);
+    });
+}
+
+//CALC 1: function to clear both input values
+function clearInputValues() {
+    $('#calc-display-num1').val('');
+    $('#calc-display-num2').val('');
+}
+
+//CALC 2: add number to display
 function addNumber() {
     console.log('you clicked a number');
     let number = $(this).data('number');
@@ -20,14 +64,14 @@ function addNumber() {
     $('#calc-display').val($('#calc-display').val() + number);
 };
 
-//add operator to display
+//CALC 2: add operator to display
 function addOperator() {
     console.log('you clicked an operator');
     let operator = $(this).data('operator');
     $('#calc-display').val($('#calc-display').val() + operator);
 };
 
-//create object from equation answer
+//CALC 2: create object from equation answer
 function equalObject() {
     console.log('you clicked on the equals');
     //check validity of input values
@@ -73,7 +117,7 @@ function appendToDom(array) {
     }
 }
 
-//check validity function
+//CALC 2: check validity function
 function isInvalid(){
     let input = $('#calc-display').val();
     if (input == ''){
@@ -106,7 +150,8 @@ function isInvalid(){
     }
     return false;
 }
-//clear display
+
+//CALC 2: clear display
 function clearDisplay() {
     console.log('you clicked on clear display button');
     $('#calc-display').val('');

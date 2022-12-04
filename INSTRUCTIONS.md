@@ -24,7 +24,7 @@ You are going to be building a server-side calculator. The logic for the calcula
 
 ### Calculator
 
-[ x ] Create a user interface where the user can input two values (2 input elements) and the select type of mathematical operation. 
+ Create a user interface where the user can input two values (2 input elements) and the select type of mathematical operation. 
       When the submit (`=` button) is clicked, capture this input, bundle it up in an object, 
 and send this object to the server via a POST. 
 There should also be a 'C' button that will clear the user input fields.
@@ -57,7 +57,7 @@ Keep a historical record of all math operations and solutions on the server. Dis
 
   *Data integrity is superfluously important! Sometimes users hit tje "go button" without fully inputting the needed fields. Show an alert if they left something empty and don't send bad or incomplete data to the server.*
 
-- Allow a user to clear the history by clicking on a button. Technically this shouldn't be a GET or a POST. Look into making a DELETE request!
+[x] - Allow a user to clear the history by clicking on a button. Technically this shouldn't be a GET or a POST. Look into making a DELETE request!
 
   *GETs are used to, well, get information from the server. POSTs are used to send new info to the server. DELETEs are used for, you guessed it, deleting info already on the server.*
 
