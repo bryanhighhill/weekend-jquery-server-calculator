@@ -32,11 +32,8 @@ app.delete('/equation', function(req, res) {
     if (req.body.what == 'delete') {
         equationHandler.removeLineItem();
         res.sendStatus(200);
+    } else {
+        equationHandler.clearHistory();
+        res.sendStatus(200);
     }
-})
-
-app.delete('/equation', function(req, res) {
-    console.log('DELETE request was made');
-    equationHandler.clearHistory();
-    res.sendStatus(200);
 })
