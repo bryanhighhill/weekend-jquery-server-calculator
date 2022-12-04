@@ -13,9 +13,9 @@ function onReady() {
     $('.calc-one-button[data-complete]').on('click', equalFunction);
     $('#clear-one-button').on('click', clearInputValues);
     //CALC #2
-    $('.calc-two-button[data-number]').on('click', addNumber);
+    $('.calc-two-num-button[data-number]').on('click', addNumber);
     $('.calc-two-button[data-operator]').on('click', addOperator);
-    $('.calc-two-button[data-complete]').on('click', equalObject);
+    $('.calc-two-equal-button[data-complete]').on('click', equalObject);
     $('#clear-two-button').on('click', clearDisplay);
     $('#clear-history-button').on('click', clearHistory);
     //$('#output').on('click', 'future button id', 'function to run');
@@ -48,6 +48,7 @@ function equalFunction() {
         alert(error.responseText);
         console.log(error);
     });
+    clearInputValues();
 }
 
 //CALC 1: function to clear both input values
