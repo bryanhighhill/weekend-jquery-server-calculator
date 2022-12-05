@@ -52,8 +52,8 @@ function equalFunction() {
         console.log(error);
     });
 
-    //call function to clear input values
-    clearInputValues();
+    //could call function here to clear input values for ease of usability
+    // clearInputValues();
 }
 
 
