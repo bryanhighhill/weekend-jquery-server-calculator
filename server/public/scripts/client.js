@@ -126,6 +126,7 @@ function getEquationsList() {
 function appendToDom(array) {
     console.log('this is my list of equations', array);
     $('#output').empty();
+    $('#calc-one-output').empty();
     for (let item of array) {
         let answerArray = item.split('=');
 
@@ -133,6 +134,11 @@ function appendToDom(array) {
         $('#output').append(`
             <li>
                 <button class="equation-button" data-equation="${answerArray[0]}">${answerArray[0]}</button>
+            </li>
+        `)
+        $('#calc-one-output').append(`
+            <li>
+                <button class="equation-button" data-equation="${answerArray[0]}">${item}</button>
             </li>
         `)
         $('#answer').empty();
