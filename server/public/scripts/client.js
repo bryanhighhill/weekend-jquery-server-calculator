@@ -264,8 +264,19 @@ function clearHistory() {
 }
 
 
+//function to clear the current answer
+function clearCurrentAnswer(){
+    $('#answer').empty();
+}
 
-//CALC 2: check validity function (add some examples of validity checks)
+
+//CALC #2 function to display answer on calculator display (part of stretch goal)
+function displayAnswer(array) {
+    $('#calc-display').val(array[0]);
+    }
+
+
+//CALC #2: check validity function (add some examples of validity checks)
 function isInvalid(){
     let input = $('#calc-display').val();
 
@@ -305,30 +316,3 @@ function isInvalid(){
 }
 
 
-
-
-//function to clear the current answer
-function clearCurrentAnswer(){
-    $('#answer').empty();
-}
-
-
-
-//GET method to retrieve answer from server (part of stretch goal)
-// function getAnswer() {
-//     $.ajax({
-//         method: 'GET',
-//         url: '/equation',
-//         data: {
-//             display: 0,
-//         },    
-//     }).then(function(response){
-//         console.log(`this is get answer response: ${response}`);
-//         displayAnswer(response);
-//     })
-// }
-
-//function to display answer on calculator display (part of stretch goal)
-function displayAnswer(array) {
-    $('#calc-display').val(array[0]);
-    }
