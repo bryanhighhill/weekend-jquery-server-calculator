@@ -19,10 +19,6 @@ app.post('/equationOne', function(req, res) {
     if (req.body.equation != undefined) {
         equationHandler.processAndSaveOne(req.body.equation);
         res.sendStatus(201); //created request
-    // } else if (req.body.display) {
-    //     console.log(`this is the equation to recompute: ${req.body.display}`);
-    //     equationHandler.process(req.body.display);
-    //     res.sendStatus(201);
     } else {
         res.sendStatus(400); //bad request
     }
@@ -34,11 +30,7 @@ app.post('/equationTwo', function(req, res) {
     console.log('POST request was made', req.body.equation);
     if (req.body.equation != undefined) {
         equationHandler.processAndSaveTwo(req.body.equation);
-        res.sendStatus(201); //created request
-    // } else if (req.body.display) {
-    //     console.log(`this is the equation to recompute: ${req.body.display}`);
-    //     equationHandler.process(req.body.display);
-    //     res.sendStatus(201);
+        res.sendStatus(201); 
     } else {
         res.sendStatus(400); //bad request
     }
@@ -49,21 +41,28 @@ app.post('/equationTwo', function(req, res) {
 app.post('/equationRedo', function(req,res) {
     console.log('POST request was made to redo this equation: ', req.body.equation);
     equationHandler.equationRedo(req.body.equation);
+    res.sendStatus(201);
 })
 
 
 //CALC #1 GET send
 app.get('/equationOne', function(req, res) {
-    console.log("GET request was made");
+    console.log('GET request was made');
     res.send(equationHandler.equationsListOne);
 });
 
 
 //CALC #2 GET send
 app.get('/equationTwo', function(req, res) {
-    console.log("GET request was made");
+    console.log('GET request was made');
     res.send(equationHandler.equationsListTwo);
 });
+
+//CALC #2 GET send redoAnswer (part of STRETCH)
+app.get('/equationRedo', function(req, res) {
+    console.log('GET request for redo Answer was made');
+    res.send(equationHandler.redoArray);
+})
 
 
 //DELETE method to remove last item on calc two equations array or empty all equation history

@@ -84,7 +84,7 @@ function equalObject() {
     if (isInvalid()) {
         return;
     }
-
+    
     // make AJAX POST method here
     $.ajax({
         method: 'POST',
@@ -94,15 +94,37 @@ function equalObject() {
         },
     }).then(function(response){
         console.log('this is the calc 2 POST response from the server', response);
-
+        
         //call function to get the updated array and append to DOM
         getEquationsListTwo();
-
+        
     }).catch(function(error){
         alert(error.responseText);
         console.log(error);
     });
 };
+
+
+//CALC #2 STRETCH GOAL make POST request for recomputing equation
+function bringBackAnswer() {
+    console.log('you want to recompute this equation');
+    let equation = $(this).data('equation');
+    console.log(`this is your equation: ${equation}`);
+
+    $.ajax({
+        method: 'POST',
+        url: '/equationRedo',
+        data: { 
+            equation: equation,
+        },
+    }).then(function(response){
+        console.log('this is the POST response from the server', response);
+        //call function to GET the updated array and append to DOM
+        getRedoAnswerArray();
+    })
+}
+
+
 
 
 //CALC #1 function to GET equations list array
@@ -131,6 +153,19 @@ function getEquationsListTwo() {
     //call function to append to DOM
         appendToDomTwo(response);
         console.log(response);
+    })
+}
+
+
+//CALC #2 function to GET redoAnswer array
+function getRedoAnswerArray() {
+    console.log('GET redoAnswerArray');
+    $.ajax({
+        method: 'GET',
+        url: '/equationRedo',
+    }).then(function(response){
+        displayAnswer(response);
+        console.log(`this is the answer from recompute: ${response}`);
     })
 }
 
@@ -180,12 +215,12 @@ function clearInputValues() {
     $('#calc-display-num2').val('');
 }
 
-//CALC 2: function to only clear the display, not remove line item
+//CALC #2: function to only clear the display, not remove line item
 function clearDisplayTwo() {
     $('#calc-display').val('');
 }
 
-//CALC 2: clear input display function
+//CALC #2: clear input display function
 function clearDisplay() {
     console.log('you clicked on clear display button');
     $('#calc-display').val('');
@@ -194,7 +229,7 @@ function clearDisplay() {
 };
 
 
-//CALC 2: remove current equation from equation array
+//CALC #2: remove current equation from equation array
 function clearLineItem() {
     console.log('in clearLineItem');
     $.ajax({
@@ -278,47 +313,22 @@ function clearCurrentAnswer(){
 }
 
 
-//function to re-compute an equation from the equation list that was clicked on (part of stretch goal)
-function bringBackAnswer() {
-    console.log('you want to recompute this equation');
-    let equation = $(this).data('equation');
-    console.log(`this is your equation: ${equation}`);
-    // let equationArray = Array.from(equation);
-    // console.log(`this is your equation string: ${equationArray}`);
-
-    $.ajax({
-        method: 'POST',
-        url: '/equationRedo',
-        data: { 
-            equation: equation,
-        },
-    }).then(function(response){
-        console.log('this is the POST response from the server', response);
-        //call function to get the updated array and append to DOM
-        getAnswer();
-    })
-}
 
 //GET method to retrieve answer from server (part of stretch goal)
-function getAnswer() {
-    $.ajax({
-        method: 'GET',
-        url: '/equation',
-        data: {
-            display: 0,
-        },    
-    }).then(function(response){
-        console.log(`this is get answer response: ${response}`);
-        displayAnswer(response);
-    })
-}
+// function getAnswer() {
+//     $.ajax({
+//         method: 'GET',
+//         url: '/equation',
+//         data: {
+//             display: 0,
+//         },    
+//     }).then(function(response){
+//         console.log(`this is get answer response: ${response}`);
+//         displayAnswer(response);
+//     })
+// }
 
 //function to display answer on calculator display (part of stretch goal)
 function displayAnswer(array) {
-    $('#calc-display').val('');
-    for (let item of array) {
-        let answerArray = item.split('=');
-        $('#calc-display').val(answerArray[1]);
-        array.length = 0;
+    $('#calc-display').val(array[0]);
     }
-}
