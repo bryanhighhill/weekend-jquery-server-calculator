@@ -19,28 +19,14 @@ app.post('/equationOne', function(req, res) {
     if (req.body.equation != undefined) {
         equationHandler.processAndSaveOne(req.body.equation);
         res.sendStatus(201); //created request
-    } else if (req.body.display) {
-        console.log(`this is the equation to recompute: ${req.body.display}`);
-        equationHandler.process(req.body.display);
-        res.sendStatus(201);
+    // } else if (req.body.display) {
+    //     console.log(`this is the equation to recompute: ${req.body.display}`);
+    //     equationHandler.process(req.body.display);
+    //     res.sendStatus(201);
     } else {
         res.sendStatus(400); //bad request
     }
 });
-
-
-//CALC #1 GET send
-app.get('/equationOne', function(req, res) {
-    console.log("GET request was made");
-    // if (req.body.display === 0) {
-    //     res.send(equationHandler.displayEquation)
-    // } else {
-    // res.send(equationHandler.equationsList);
-    // }
-    res.send(equationHandler.equationsListOne);
-});
-
-
 
 
 //CALC #2 POST
@@ -49,26 +35,36 @@ app.post('/equationTwo', function(req, res) {
     if (req.body.equation != undefined) {
         equationHandler.processAndSaveTwo(req.body.equation);
         res.sendStatus(201); //created request
-    } else if (req.body.display) {
-        console.log(`this is the equation to recompute: ${req.body.display}`);
-        equationHandler.process(req.body.display);
-        res.sendStatus(201);
+    // } else if (req.body.display) {
+    //     console.log(`this is the equation to recompute: ${req.body.display}`);
+    //     equationHandler.process(req.body.display);
+    //     res.sendStatus(201);
     } else {
         res.sendStatus(400); //bad request
     }
 });
 
 
+//CALC #2 POST - redo Equation (part of stretch goal)
+app.post('/equationRedo', function(req,res) {
+    console.log('POST request was made to redo this equation: ', req.body.equation);
+    equationHandler.equationRedo(req.body.equation);
+})
+
+
+//CALC #1 GET send
+app.get('/equationOne', function(req, res) {
+    console.log("GET request was made");
+    res.send(equationHandler.equationsListOne);
+});
+
+
 //CALC #2 GET send
 app.get('/equationTwo', function(req, res) {
     console.log("GET request was made");
-    // if (req.body.display === 0) {
-    //     res.send(equationHandler.displayEquation)
-    // } else {
-    // res.send(equationHandler.equationsList);
-    // }
     res.send(equationHandler.equationsListTwo);
 });
+
 
 //DELETE method to remove last item on calc two equations array or empty all equation history
 app.delete('/equationTwo', function(req, res) {

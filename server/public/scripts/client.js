@@ -283,11 +283,14 @@ function bringBackAnswer() {
     console.log('you want to recompute this equation');
     let equation = $(this).data('equation');
     console.log(`this is your equation: ${equation}`);
+    // let equationArray = Array.from(equation);
+    // console.log(`this is your equation string: ${equationArray}`);
+
     $.ajax({
         method: 'POST',
-        url: '/equation',
+        url: '/equationRedo',
         data: { 
-            display: equation,
+            equation: equation,
         },
     }).then(function(response){
         console.log('this is the POST response from the server', response);

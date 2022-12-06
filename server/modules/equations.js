@@ -1,13 +1,13 @@
 let equationsListOne = [];
 let equationsListTwo = [];
-let displayEquation = [];
+let redoArray = [];
 
 //object that decifers and splits up equation
 let equationHandler = {
     
     equationsListOne: equationsListOne,
     equationsListTwo: equationsListTwo,
-    displayEquation: displayEquation,
+    redoArray: redoArray,
 
     //CALC #1 processAndSave
     processAndSaveOne: function processAndSaveOne (equation) {
@@ -50,49 +50,56 @@ let equationHandler = {
         }
     },
     
+    //CALC #2 remove current equation from array
     removeLineItem: function removeLineItem() {
         console.log('removeLineItem request was made');
         equationsListTwo.pop();
         console.log(equationsListTwo);
     },
 
+    //CLEAR ALL HISTORY
     clearHistory: function clearHistory() {
         console.log('in clearHistory function');
         equationsListOne.length = 0;
         equationsListTwo.length = 0;
     },
-    
-    
-    //function to split an equation from equation list after it's clicked (part of stretch goal)
-    process: function process(equation) {
-        if (equation.includes ('+')) {
-            let numArray = equation.split('+');
-            mathAnswer(numArray[0], '+', numArray[1]);
-        }
-        if (equation.includes ('-')) {
-            let numArray = equation.split('-');
-            mathAnswer(numArray[0], '-', numArray[1]);
-        }
-        if (equation.includes ('/')) {
-            let numArray = equation.split('/');
-            mathAnswer(numArray[0], '/', numArray[1]);
-        }
-        if (equation.includes ('*')) {
-            let numArray = equation.split('*');
-            mathAnswer(numArray[0], '*', numArray[1]);
-        }
 
+    //CALC #2 function to recompute equation and push to array (part of stretch goal)
+    equationRedo: function equationRedo (equation) {
+        console.log(`this is redo equation: ${equation}`);
+        let equationString = String(equation);
+        let newEquationString = equationString.replaceAll(' ','');
+        console.log(`this is new equation string ${newEquationString}`);
+
+        if (newEquationString.includes('+')) {
+            let numArray = newEquationString.split('+');
+            console.log(numArray);
+            redoMath(numArray[0], '+', numArray[1]);
+        }
+        if (newEquationString.includes('-')) {
+            let numArray = newEquationString.split('-');
+            redoMath(numArray[0], '-', numArray[1]);
+        }
+        if (newEquationString.includes('*')) {
+            let numArray = newEquationString.split('*');
+            redoMath(numArray[0], '*', numArray[1]);
+        }
+        if (newEquationString.includes('/')) {
+            let numArray = newEquationString.split('/');
+            redoMath(numArray[0], '/', numArray[1]);
+        }
     }
 }
 
-
+                
+                
 //CALC #1 mathDoer
 function mathDoerOne (num1, operator, num2) {
     let number1 = Number(num1);
     let number2 = Number(num2);
     console.log(number1);
     console.log(number2);
-
+    
     if (operator == '+') {
         equationsListOne.push(`${number1} + ${number2} = ${number1 + number2}`);
     }
@@ -104,7 +111,7 @@ function mathDoerOne (num1, operator, num2) {
     }
     if (operator == '*') {
         equationsListOne.push(`${number1} * ${number2} = ${number1 * number2}`);
-    console.log(`this is your calc 1 equationsList array: ${equationsListOne}`);
+        console.log(`this is your calc 1 equationsList array: ${equationsListOne}`);
     }
 }
 
@@ -115,7 +122,7 @@ function mathDoerTwo (num1, operator, num2) {
     let number2 = Number(num2);
     console.log(number1);
     console.log(number2);
-
+    
     if (operator == '+') {
         equationsListTwo.push(`${number1} + ${number2} = ${number1 + number2}`);
     }
@@ -127,37 +134,33 @@ function mathDoerTwo (num1, operator, num2) {
     }
     if (operator == '*') {
         equationsListTwo.push(`${number1} * ${number2} = ${number1 * number2}`);
-    console.log(`this is your calc 2 equationsList array: ${equationsListTwo}`);
+        console.log(`this is your calc 2 equationsList array: ${equationsListTwo}`);
     }
 }
 
-
-
-//function to recompute equation and push to array (part of stretch goal)
-function mathAnswer (num1, operator, num2) {
+                
+                
+//CALC #2 function to REDO equation and push to array (part of stretch goal)
+function redoMath(num1, operator, num2) {
     let number1 = Number(num1);
     let number2 = Number(num2);
-    console.log(`this is number 1: ${number1}`);
-    console.log(`this is number 2: ${number2}`);
+    redoArray.length = 0;
 
     if (operator == '+') {
-        displayEquation.length = 0;
-        displayEquation.push(number1 + number2);
+        redoArray.push(number1 + number2);
     }
     if (operator == '-') {
-        displayEquation.length = 0;
-        displayEquation.push(number1 - number2);
-    }
-    if (operator == '/') {
-        displayEquation.length = 0;
-        displayEquation.push(number1 / number2);
+        redoArray.push(number1 - number2);
     }
     if (operator == '*') {
-        displayEquation.length = 0;
-        displayEquation.push(number1 * number2);
+        redoArray.push(number1 * number2);
     }
-console.log(`this is your display array: ${displayEquation}`);
+    if (operator == '/') {
+        redoArray.push(number1 / number2);
+    }
+    console.log(`this is the answer to your redo equation: ${redoArray}`);
 }
+
 
 
 
