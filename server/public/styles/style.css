@@ -19,6 +19,11 @@
     border-radius: 10%;
 }
 
+.clear-display-button {
+    background-color: rgb(237, 119, 80);
+    border-radius: 10%;
+}
+
 .calc-two-equal-button {
     background-color: rgb(120, 171, 105);
     border-radius: 10%;

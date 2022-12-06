@@ -12,18 +12,8 @@ app.listen(port, () => {
     console.log('listening on port, ', port);
 });
 
-//CALC ONE Get send
-app.get('/equationOne', function(req, res) {
-    console.log("GET request was made");
-    // if (req.body.display === 0) {
-    //     res.send(equationHandler.displayEquation)
-    // } else {
-    // res.send(equationHandler.equationsList);
-    // }
-    res.send(equationHandler.equationsListOne);
-});
 
-//CALC ONE POST
+//CALC #1 POST
 app.post('/equationOne', function(req, res) {
     console.log('POST request was made', req.body.equation);
     if (req.body.equation != undefined) {
@@ -39,12 +29,55 @@ app.post('/equationOne', function(req, res) {
 });
 
 
-app.delete('/equation', function(req, res) {
+//CALC #1 GET send
+app.get('/equationOne', function(req, res) {
+    console.log("GET request was made");
+    // if (req.body.display === 0) {
+    //     res.send(equationHandler.displayEquation)
+    // } else {
+    // res.send(equationHandler.equationsList);
+    // }
+    res.send(equationHandler.equationsListOne);
+});
+
+
+
+
+//CALC #2 POST
+app.post('/equationTwo', function(req, res) {
+    console.log('POST request was made', req.body.equation);
+    if (req.body.equation != undefined) {
+        equationHandler.processAndSaveTwo(req.body.equation);
+        res.sendStatus(201); //created request
+    } else if (req.body.display) {
+        console.log(`this is the equation to recompute: ${req.body.display}`);
+        equationHandler.process(req.body.display);
+        res.sendStatus(201);
+    } else {
+        res.sendStatus(400); //bad request
+    }
+});
+
+
+//CALC #2 GET send
+app.get('/equationTwo', function(req, res) {
+    console.log("GET request was made");
+    // if (req.body.display === 0) {
+    //     res.send(equationHandler.displayEquation)
+    // } else {
+    // res.send(equationHandler.equationsList);
+    // }
+    res.send(equationHandler.equationsListTwo);
+});
+
+//DELETE method to remove last item on calc two equations array or empty all equation history
+app.delete('/equationTwo', function(req, res) {
     console.log('delete line item request was made');
-    if (req.body.what == 'delete') {
+    if (req.body.action === 'delete item') {
         equationHandler.removeLineItem();
         res.sendStatus(200);
-    } else {
+    } 
+    if (req.body.action === 'delete all') {
         equationHandler.clearHistory();
         res.sendStatus(200);
     }
