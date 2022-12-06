@@ -12,21 +12,22 @@ app.listen(port, () => {
     console.log('listening on port, ', port);
 });
 
-app.get('/equation', function(req, res) {
+//CALC ONE Get send
+app.get('/equationOne', function(req, res) {
     console.log("GET request was made");
     // if (req.body.display === 0) {
     //     res.send(equationHandler.displayEquation)
     // } else {
     // res.send(equationHandler.equationsList);
     // }
-    res.send(equationHandler.equationsList);
+    res.send(equationHandler.equationsListOne);
 });
 
-
-app.post('/equation', function(req, res) {
+//CALC ONE POST
+app.post('/equationOne', function(req, res) {
     console.log('POST request was made', req.body.equation);
     if (req.body.equation != undefined) {
-        equationHandler.processAndSave(req.body.equation);
+        equationHandler.processAndSaveOne(req.body.equation);
         res.sendStatus(201); //created request
     } else if (req.body.display) {
         console.log(`this is the equation to recompute: ${req.body.display}`);

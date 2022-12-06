@@ -37,7 +37,7 @@ function operatorFunction() {
 function equalFunction() {
     $.ajax({
         method: 'POST',
-        url: '/equation',
+        url: '/equationOne',
         data: { 
             equation: $('#calc-display-num1').val() + operatorArray[0] + $('#calc-display-num2').val(),
         },
@@ -108,21 +108,35 @@ function equalObject() {
     });
 };
 
-//function to GET equations list array
+//CALC ONE function to GET equations list array
 function getEquationsList() {
     console.log('GET function for equations list was called');
     $.ajax({
         method: 'GET',
-        url: '/equation',
+        url: '/equationOne',
     }).then(function(response){
-
+        console.log(`this is your get response: ${response}`);
     //call function to append to DOM
-        appendToDom(response);
+        appendToDomOne(response);
         console.log(response);
     })
 }
 
-//function to split equations into two parts and append to the appropriate spots on the DOM
+//CALC ONE function to split equations into two parts and append to the appropriate spots on the DOM
+function appendToDomOne(array) {
+    console.log('this is my list of CALC ONE equations', array);
+    $('#calc-one-output').empty();
+    for (let item of array) {
+        $('#calc-one-output').append(`
+            <li>
+                ${item}
+            </li>
+        `)
+    }
+}
+
+
+
 function appendToDom(array) {
     console.log('this is my list of equations', array);
     $('#output').empty();

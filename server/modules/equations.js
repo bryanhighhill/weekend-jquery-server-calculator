@@ -1,11 +1,37 @@
+let equationsListOne = [];
+let equationsListTwo = [];
 let equationsList = [];
 let displayEquation = [];
 
 //object that decifers and splits up equation
 let equationHandler = {
     
+    equationsListOne: equationsListOne,
+    equationsListTwo: equationsListTwo,
     equationsList: equationsList,
     displayEquation: displayEquation,
+
+    //CALC ONE processAndSave
+    processAndSaveOne: function processAndSaveOne (equation) {
+        if (equation.includes ('+')) {
+            let numArray = equation.split('+');
+            mathDoerOne(numArray[0], '+', numArray[1]);
+        }
+        if (equation.includes ('-')) {
+            let numArray = equation.split('-');
+            mathDoerOne(numArray[0], '-', numArray[1]);
+        }
+        if (equation.includes ('/')) {
+            let numArray = equation.split('/');
+            mathDoerOne(numArray[0], '/', numArray[1]);
+        }
+        if (equation.includes ('*')) {
+            let numArray = equation.split('*');
+            mathDoerOne(numArray[0], '*', numArray[1]);
+        }
+    },
+
+
 
     processAndSave: function processAndSave (equation) {
         if (equation.includes ('+')) {
@@ -58,6 +84,30 @@ let equationHandler = {
 
     }
 }
+
+
+//CALC ONE mathDoer
+function mathDoerOne (num1, operator, num2) {
+    let number1 = Number(num1);
+    let number2 = Number(num2);
+    console.log(number1);
+    console.log(number2);
+
+    if (operator == '+') {
+        equationsListOne.push(`${number1} + ${number2} = ${number1 + number2}`);
+    }
+    if (operator == '-') {
+        equationsListOne.push(`${number1} - ${number2} = ${number1 - number2}`);
+    }
+    if (operator == '/') {
+        equationsListOne.push(`${number1} / ${number2} = ${number1 / number2}`);
+    }
+    if (operator == '*') {
+        equationsListOne.push(`${number1} * ${number2} = ${number1 * number2}`);
+    console.log(`this is your equationsList array: ${equationsList}`);
+    }
+}
+
 
 function mathDoer (num1, operator, num2) {
     let number1 = Number(num1);
