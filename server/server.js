@@ -6,7 +6,7 @@ const port = 5001;
 app.use(express.static('server/public'));
 app.use(express.urlencoded());
 
-const equationHandler = require('./public/scripts/equations');
+const equationHandler = require('./modules/equations');
 
 app.listen(port, () => {
     console.log('listening on port, ', port);
