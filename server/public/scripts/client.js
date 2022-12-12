@@ -176,9 +176,8 @@ function appendToDomOne(array) {
     $('#calc-one-output').empty();
     for (let item of array) {
         $('#calc-one-output').append(`
-            <li>
-                ${item}
-            </li>
+            ${item}
+            <br />
         `)
     }
 }
@@ -197,14 +196,12 @@ function appendToDomTwo(array) {
 
         //make button from equation so that a click event can be created (part of stretch goal)
         $('#output').append(`
-            <li>
-                <button class="equation-button" data-equation="${answerArray[0]}">${answerArray[0]}</button>
-            </li>
+            <button class="equation-button" data-equation="${answerArray[0]}">${answerArray[0]}</button>
+            <br />
         `);
         $('#answer').append(`
-        <h1>
-            ${answerArray[1]}
-        </h1>`)
+            <b>${answerArray[1]}</b>
+        `)
     }
 }
 
@@ -273,6 +270,10 @@ function clearCurrentAnswer(){
 //CALC #2 function to display answer on calculator display (part of stretch goal)
 function displayAnswer(array) {
     $('#calc-display').val(array[0]);
+    $('#answer').empty();
+    $('#answer').append(`
+        <b>${array[0]}</b>
+    `);
     }
 
 

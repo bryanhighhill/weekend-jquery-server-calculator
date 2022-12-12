@@ -7,62 +7,134 @@
     <link rel="stylesheet" href="./styles/style.css"></script>
     <script src="./vendors/jquery.js"></script>
     <script src="./scripts/client.js"></script>
-    <title>Weekend Challenge #2</title>
+    <title>Bryan's Calculators</title>
 </head>
-<body>
-    <h1>Weekend Challenge #2</h1>
-    <div id="calc-one">
-        <h2>Server Side Calculator #1</h2>
-        <input type="text" placeholder="0" id="calc-display-num1">
-        <button class="calc-one-button" data-operator="+">+</button>
-        <button class="calc-one-button" data-operator="-">-</button>
-        <button class="calc-one-button" data-operator="*">*</button>
-        <button class="calc-one-button" data-operator="/">/</button>
-        <input type="text" placeholder="0" id="calc-display-num2">
-        <button id="equals" class="calc-one-button" data-complete>=</button>
-        <button class="clear-button" id="clear-one-button">C</button>
+<center>
+    <body>
+        <h1>Bryan's Calculators</h1>
         <br />
-        <br />
-    </div>
-    <h2>Calculator One Equation History</h2>
-    <ul id="calc-one-output">    
-    </ul>
-    <br />
-    <div id="calc-two">    
-        <h2>Server Side Calculator #2</h2>
-        <input type="text" placeholder="0" id="calc-display">
-        <button class="clear-button" id="clear-two-button">C</button>
-        <button class="clear-display-button" id="clear-display-button">Clear display</button>
-        <br />
-        <br />
-        <div class="calc-button-grid">
-            <button class="calc-two-num-button" data-number="7">7</button>
-            <button class="calc-two-num-button" data-number="8">8</button>
-            <button class="calc-two-num-button" data-number="9">9</button>
-            <button class="calc-two-button" data-operator="+">+</button>
-            <button class="calc-two-num-button" data-number="4">4</button>
-            <button class="calc-two-num-button" data-number=5>5</button>
-            <button class="calc-two-num-button" data-number="6">6</button>
-            <button class="calc-two-button" data-operator="-">-</button>
-            <button class="calc-two-num-button" data-number="1">1</button>
-            <button class="calc-two-num-button" data-number="2">2</button>
-            <button class="calc-two-num-button" data-number="3">3</button>
-            <button class="calc-two-button" data-operator="*">*</button>
-            <button class="calc-two-num-button" data-number="0">0</button>
-            <button id="decimal" class="calc-two-button" data-operator=".">.</button>
-            <button class="calc-two-equal-button" data-complete>=</button>
-            <button class="calc-two-button" data-operator="/">/</button>
+        <div id="clear-all">
+            <hr class="solid">
+            <br />
+            clear equation history from <b>BOTH</b> calculators
+            <br />
+            <br />
+            <button class="clear-button" id="clear-history-button">clear equation history</button>
+            <br />
+            <br />
+            <hr class="solid">
         </div>
-    </div>
-    <br />
-    <h2>Answer:</h2>
-    <div id="answer"></div>
-    <br />
-    <hr />
-    <button class="clear-button" id="clear-history-button">clear equation history</button>
-    <h2>Equation History</h2>
-    <ul id="output">    
-    </ul>
-
-</body>
+        <br />
+        <div id="calc-one-descrip">
+            <b><u>Calculator #1 Description</u></b>
+            <br />
+            The user enters 2 integer values in the input fields provided. An operator can be selected by clicking on one of the four options 
+            (addition, subtraction, multiplication, division). Once the equation is written, clicking the equals sign will send the
+            equation to the server where the math logic is performed. The equation and answer is then sent back to the DOM where it is appended
+            beneath the "Calculator #1 Equation History" header.
+            <br />
+            The "C" button clears out any values in the integer input fields.
+        </div>
+        <br />
+        <div id="calc-one">
+            <h2 id="calc-one-header">Server Side Calculator #1</h2>
+            <input type="number" placeholder="0" id="calc-display-num1">
+            <button class="calc-one-button" data-operator="+">+</button>
+            <button class="calc-one-button" data-operator="-">-</button>
+            <button class="calc-one-button" data-operator="*">*</button>
+            <button class="calc-one-button" data-operator="/">/</button>
+            <br />
+            <div id="calc-one-line2">
+                <input type="number" placeholder="0" id="calc-display-num2">
+                <button id="equals" class="calc-one-button" data-complete>=</button>
+                <button class="clear-button" id="clear-one-button">C</button>
+            </div>
+            <br />
+            <br />
+        </div>
+        <br />
+        <div id="calc-one-history">
+            <u>Calculator #1 Equation History</u>
+        </div>
+        <br />
+        <div id="calc-one-output">    
+        </div>
+        <br />
+        <hr class="solid">
+        <br />
+        <br />
+        <div id="calc-one-descrip">
+            <b><u>Calculator #2 Description</u></b>
+            <br />
+            The user enters an equation using the keypad. The equation can be seen in the calculator's display as it is being entered. 
+            Once the equation is written, clicking on the equals sign will send the equation to the server where the math logic is performed. 
+            The equation and answer is then sent back to the DOM. The answer is then displayed on the DOM underneath the "Answer" header. 
+            A history of the equations are then stored on the DOM underneath the "Calculator #2 Equation History Header" however they don't include the
+            answer.
+            <br />
+            If the user would like to view an answer to a previously performed equation, simply click on that equation in the equation history. That equation
+            is then sent back to the server where the math logic is performed and the answer is sent back to the DOM where it will be shown in the calculator's display.
+            <br />
+            The "clear display" button will clear out all data in the calculator's display. The "C" button will remove the most recent equation from the
+            Equation History section as well as remove the answer from the Answer section.
+        </div>
+        <br />
+        <div id="calc-two">    
+            <h2 id="calc-two-header">Server Side Calculator #2</h2>
+            <div id="calc-two-display-box">
+                <input type="text" placeholder="0" id="calc-display">
+                <br />
+                <div class="calc-two-deletes">
+                    <button class="clear-display-button" id="clear-display-button">clear display</button>
+                    <button class="clear-button" id="clear-two-button">C</button>
+                </div>
+                <br />
+                <br />
+            </div>
+            <div class="calc-button-grid">
+                <button class="calc-two-num-button" data-number="7">7</button>
+                <button class="calc-two-num-button" data-number="8">8</button>
+                <button class="calc-two-num-button" data-number="9">9</button>
+                <button class="calc-two-button" data-operator="+">+</button>
+                <button class="calc-two-num-button" data-number="4">4</button>
+                <button class="calc-two-num-button" data-number=5>5</button>
+                <button class="calc-two-num-button" data-number="6">6</button>
+                <button class="calc-two-button" data-operator="-">-</button>
+                <button class="calc-two-num-button" data-number="1">1</button>
+                <button class="calc-two-num-button" data-number="2">2</button>
+                <button class="calc-two-num-button" data-number="3">3</button>
+                <button class="calc-two-button" data-operator="*">*</button>
+                <button class="calc-two-num-button" data-number="0">0</button>
+                <button id="decimal" class="calc-two-button" data-operator=".">.</button>
+                <button class="calc-two-equal-button" data-complete>=</button>
+                <button class="calc-two-button" data-operator="/">/</button>
+            </div>
+        </div>
+        <br />
+        <div id="calc-two-answer">
+            <b>Answer</b>
+        </div>
+        <div id="answer">
+        </div>
+        <br />
+        <div id="calc-two-history">
+            <u>Calculator #2 Equation History</u>
+        </div>
+        <br />
+        <div id="output">    
+        </div>
+        <hr class="solid">
+        <b><u>Languages Used:</u></b>
+        <br />
+        HTML
+        <br />
+        CSS
+        <br />
+        JavaScript
+        <br />
+        jQuery
+        <br />
+        AJAX
+    </body>
+</center>
 </html>
