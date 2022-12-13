@@ -49,6 +49,7 @@ app.post('/equationRedo', function(req,res) {
 app.get('/equationOne', function(req, res) {
     console.log('GET request was made');
     res.send(equationHandler.equationsListOne);
+    res.sendStatus(200);
 });
 
 
@@ -56,12 +57,14 @@ app.get('/equationOne', function(req, res) {
 app.get('/equationTwo', function(req, res) {
     console.log('GET request was made');
     res.send(equationHandler.equationsListTwo);
+    res.sendStatus(200);
 });
 
 //CALC #2 GET send redoAnswer (part of STRETCH)
 app.get('/equationRedo', function(req, res) {
     console.log('GET request for redo Answer was made');
     res.send(equationHandler.redoArray);
+    res.sendStatus(200);
 })
 
 
