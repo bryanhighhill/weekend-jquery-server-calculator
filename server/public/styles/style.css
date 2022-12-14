@@ -105,10 +105,24 @@ body {
     font-size: 20px;
 }
 
+/* REMOVES UP AND DOWN ARROWS FROM INTEGER INPUT FIELD */
+#calc-display-num1::-webkit-outer-spin-button,
+#calc-display-num1::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 #calc-display-num2 {
     width: 40%;
     height: 40px;
     font-size: 20px;
+}
+
+/* REMOVES UP AND DOWN ARROWS FROM INTEGER INPUT FIELD */
+#calc-display-num2::-webkit-outer-spin-button,
+#calc-display-num2::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 #calc-one-line2 {
