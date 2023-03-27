@@ -3,58 +3,27 @@
 [Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
 
 ## Description
+This app consists of two server-side calculators. All logic for the calculators are implemented and performed on the server.
+The first calculator takes in two integer values in the fields provided. An operator can be selected by clicking on one of the four options. Once the equal button is clicked, the equation is send to the server where the logic is performed. The equation and answer are then sent back to the dom where it can be viewed underneath the "Calculator #1 Equation History" header. The "C" button clears out the input fields for that calculator.
+On the second calculator, the user enters an equation using the keypad, which is visible in the calculator's display as it's being entered. Once the equal sign is clicked, the equation is send to the server where the math logic is performed. The equation and answer are send back to the dom where the answer is shown underneath the "Answer" header. A history of equations made using the second calculator can be seen beneath "Calculator #2 Equation History" however, the answers aren't included there.
+If a user would like to view an answer to a previously performed equation, they can simply click on that equation in the equation history section. That equation is then sent back to the server where the logic is performed again. The recomputed answer is then made visible in the calculator's display, as well as beteath "Answer". 
+The "clear display" button will clear out all data in the calculator's display. The "C" button will remove the most recent equation from the Equation History section.
 
-Your project description goes here. What problem did you solve? How did you solve it?
+## Time
+1 week (approx)
 
-Weekend Challenge: Server Side Calculator
+## Start Project
+npm install express
+npm start server
 
-Welcome to the weekend challenge!
-
-You are going to be building a server-side calculator. The logic for the calculator must be implemented on the server.
-
-Required Features
-
-Calculator
-
-[ ] 1. Create a user interface where the user can input two values (2 input elements) and then select type of mathematical operation. 
-
-[ ] 2. When the submit (= button) is clicked, capture this input, bundle it up in an object, and send this object to the server via a POST. 
-
-[ ] 3. There should also be a 'C' button that will clear the user input fields.
-
-[ ] 4. Build out the server-side logic to compute the numbers as appropriate. The server should be able to handle Addition, Subtraction, Multiplication, and Division. 
-
-[ ] 5. Once the calculation is complete, send back the OK. You should do a GET request after the POST to get the actual calculation.
-
-History
-
-[ ] 6. Keep a historical record of all math operations and solutions on the server. Display a list of all previous calculations on the page when it loads using a GET request. Update the list when a new calculation is made.
-
-NOTE: History should exist even after refreshing the page. It's expected that the history will go away after restarting the server. We'll talk about long term data storage next week.
-base mode interface
-
-Note: Do not use eval() to complete this assignment.
+## Tech Used
+Node
+Express
+JavaScript
+jQuery
+AJAX
+HTML
+CSS
 
 
 
-Stretch Goals
-
-Convert the interface to look and behave like a calculator as shown below.
-
-Interfaces that mirror real world objects are often more intuitive and self-explanatory for users.
-
-calculator interface
-
-Only allow the POST call to happen if all necessary input is ready.
-
-Data integrity is superfluously important! Sometimes users hit tje "go button" without fully inputting the needed fields. Show an alert if they left something empty and don't send bad or incomplete data to the server.
-
-Allow a user to clear the history by clicking on a button. Technically this shouldn't be a GET or a POST. Look into making a DELETE request!
-
-GETs are used to, well, get information from the server. POSTs are used to send new info to the server. DELETEs are used for, you guessed it, deleting info already on the server.
-
-Allow a user to click on an entry in the History list to re-run that calculation. This should display the answer on the calculator interface like a normal calculation.
-
-Anticipating a user's wants and adding the feature in the interface is often a logical progression that ends up in stretch goals for project.
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
